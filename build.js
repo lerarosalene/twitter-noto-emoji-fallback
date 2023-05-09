@@ -15,6 +15,9 @@ async function config(path) {
 
 async function main() {
   const manifest = await config(path.join('src', 'manifest.yaml'));
+  if (process.env.CHROME_WEBSTORE_VERSION) {
+    delete manifest.key;
+  }
   await fs.mkdir(path.join('dist', 'chrome'), { recursive: true });
   await fs.writeFile(path.join('dist', 'chrome', 'manifest.json'), JSON.stringify(manifest, null, 2));
 
