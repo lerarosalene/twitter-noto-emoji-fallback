@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "postinstall": "rimraf noto-emoji && git clone --depth=1 https://github.com/googlefonts/noto-emoji.git && rimraf noto-emoji/.git",
-    "build": "node build.js"
+    "build": "tsc --noEmit && node build.js"
   },
   "keywords": [],
   "author": "Larissa Rosalene <lerarosalene@outlook.com>",
