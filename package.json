@@ -1,7 +1,7 @@
 {
   "name": "twitter-noto-emojis",
   "private": true,
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Shows Noto Emojis on Twitter",
   "main": "index.js",
   "scripts": {
