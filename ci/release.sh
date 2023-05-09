@@ -30,5 +30,5 @@ TAG_NAME="v${BRANCH_NAME/release\//}"
 
 gh release create "${TAG_NAME}" \
   --notes "Release: ${TAG_NAME}" \
-  "${ARTIFACTS_DIR}/twitter-noto-emoji.zip#Self-distribution version" \
-  "${ARTIFACTS_DIR}/twitter-noto-emoji-cws.zip#Version to upload to CWS"
+  "${ARTIFACTS_DIR}/twitter-noto-emoji.zip#twitter-noto-emoji.zip: Chrome self-distribution version" \
+  "${ARTIFACTS_DIR}/twitter-noto-emoji-cws.zip#twitter-noto-emoji-cws.zip: Chrome version to upload to CWS"

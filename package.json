@@ -1,7 +1,7 @@
 {
-  "name": "twitter-noto-fallback",
+  "name": "twitter-noto-emojis",
   "private": true,
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Shows Noto Emojis on Twitter",
   "main": "index.js",
   "scripts": {
