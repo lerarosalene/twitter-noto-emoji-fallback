@@ -13,21 +13,21 @@ trap cleanup EXIT
 
 npm run build
 pushd dist/chrome
-  zip "${ARTIFACTS_DIR}/twitter-noto-emoji.zip" *
+  zip -r "${ARTIFACTS_DIR}/twitter-noto-emoji.zip" *
 popd
 
 # Chrome WebStore
 
 CHROME_WEBSTORE_VERSION=1 npm run build
 pushd dist/chrome
-  zip "${ARTIFACTS_DIR}/twitter-noto-emoji-cws.zip" *
+  zip -r "${ARTIFACTS_DIR}/twitter-noto-emoji-cws.zip" *
 popd
 
 # Firefox
 
 BROWSER=firefox npm run build
 pushd dist/firefox
-  zip "${ARTIFACTS_DIR}/twitter-noto-emoji-ff.zip" *
+  zip -r "${ARTIFACTS_DIR}/twitter-noto-emoji-ff.zip" *
 popd
 
 # Upload
