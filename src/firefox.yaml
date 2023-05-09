@@ -1,0 +1,6 @@
+background:
+  scripts: ["bg.js"]
+
+browser_specific_settings:
+  gecko:
+    id: twitter-noto-emojis@lerarosalene.github.io
