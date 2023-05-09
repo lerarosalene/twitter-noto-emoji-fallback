@@ -13,6 +13,19 @@ async function config(path) {
   return yaml.parse(asYaml);
 }
 
+function build(entry, outfile) {
+  return esbuild.build({
+    entryPoints: [entry],
+    bundle: true,
+    minify: false,
+    define: {
+      __EXTENSION_API__: "chrome",
+    },
+    outfile: outfile,
+    target: "esnext",
+  });
+}
+
 async function main() {
   const manifest = await config(path.join('src', 'manifest.yaml'));
   if (process.env.CHROME_WEBSTORE_VERSION) {
@@ -21,15 +34,12 @@ async function main() {
   await fs.mkdir(path.join('dist', 'chrome'), { recursive: true });
   await fs.writeFile(path.join('dist', 'chrome', 'manifest.json'), JSON.stringify(manifest, null, 2));
 
-  await esbuild.build({
-    entryPoints: [path.join('src', 'content.js')],
-    bundle: true,
-    minify: false,
-    define: {
-      __EXTENSION_API__: "chrome",
-    },
-    outfile: path.join('dist', 'chrome', 'content.js'),
-  });
+  await build(path.join('src', 'content.ts'), path.join('dist', 'chrome', 'content.js'));
+  await build(path.join('src', 'bg.ts'), path.join('dist', 'chrome', 'bg.js'));
+  await build(path.join('src', 'popup.ts'), path.join('dist', 'chrome', 'popup.js'));
+  await fs.copyFile(path.join('src', 'popup.html'), path.join('dist', 'chrome', 'popup.html'));
+  await fs.copyFile(require.resolve('bootstrap/dist/css/bootstrap.min.css'), path.join('dist', 'chrome', 'bootstrap.min.css'));
+  await fs.copyFile(path.join('src', 'popup.css'), path.join('dist', 'chrome', 'popup.css'));
 
   const emojiBaseDir = path.join('noto-emoji', 'svg');
   const emojiFiles = await fs.readdir(emojiBaseDir);

@@ -12,9 +12,12 @@
   "author": "Larissa Rosalene <lerarosalene@outlook.com>",
   "license": "ISC",
   "dependencies": {
+    "@types/chrome": "^0.0.235",
+    "bootstrap": "^5.2.3",
     "esbuild": "^0.17.18",
     "mustache": "^4.2.0",
     "rimraf": "^5.0.0",
+    "typescript": "^5.0.4",
     "yaml": "^2.2.2"
   }
 }

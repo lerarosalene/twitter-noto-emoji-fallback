@@ -5,6 +5,17 @@ version: {{ & version }}
 author: {{ & author }}
 key: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA1CnRrmKCoJnZEQtCnmEa/sKji3IK/03yRansGBzUydI0cQey4f8aJxAUVmNa3PbcL5s/rilmBiqAjuYczP0Ai6qUIwIBl/N+VfR60Sj2MR3HdKDLlzy33dx37IWi73kvogT67cEJOWDdYV60jPreYqf1J4YGVNBy3gzezTs4XErc4HQ2CvigjZ8EuDowZVVuBVpIf7aSFup6/49cglGK54T0UXuRsEFOsbmwBKqZuORW3DF4OiRDVd6oT/amtluHmOxj1wKTRpMWBuSclbn7RErlg34B0CuXsQCl+Ip1WGIgwh7CK16v8W9qhfOtw8xRddlYkBSY4FWCr23hFgFmJQIDAQAB
 
+background:
+  service_worker: bg.js
+
+action:
+  default_icon:
+    128: icons/128.png
+  default_popup: popup.html
+
+permissions:
+  - storage
+
 content_scripts:
   - matches: ["*://*.twitter.com/*"]
     js: ["content.js"]
