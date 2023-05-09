@@ -6,6 +6,25 @@ This extension can:
 - replace emojis that failed to load from twitter cdn
 - replace all emojis
 
-### Firefox version?
+### Build it yourself
 
-Some day.
+#### Chrome version for self-distribution
+```
+npm ci
+npm run build
+```
+
+#### Chrome version for CWS
+```
+npm ci
+CHROME_WEBSTORE_VERSION=1 npm run build
+```
+
+#### Firefox version
+
+```
+npm ci
+BROWSER=firefox npm run build
+```
+
+Then you can find built version in `dist/<browser-name>` where `<browser-name>` is either `chrome` or `firefox`.
