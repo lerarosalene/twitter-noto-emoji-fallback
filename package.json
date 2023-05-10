@@ -5,7 +5,7 @@
   "description": "Shows Noto Emojis on Twitter",
   "main": "index.js",
   "scripts": {
-    "postinstall": "rimraf noto-emoji && git clone --depth=1 https://github.com/googlefonts/noto-emoji.git && rimraf noto-emoji/.git",
+    "postinstall": "rimraf noto-emoji && git clone -c core.symlinks=true --depth=1 https://github.com/googlefonts/noto-emoji.git && rimraf noto-emoji/.git",
     "build": "tsc --noEmit && node build.js"
   },
   "keywords": [],
