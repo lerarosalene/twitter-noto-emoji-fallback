@@ -20,13 +20,15 @@ class ContentScript {
   }
 
   private handleImage(img: HTMLImageElement) {
-    const match = new URL(img.src, location.href).pathname.match(IS_EMOJI_REGEX);
+    const match = new URL(img.src, location.href).pathname.match(
+      IS_EMOJI_REGEX
+    );
     if (!match) {
       return;
     }
 
-    const codepoints = match[1].split('-').filter(cp => cp !== 'fe0f');
-    const notoCode = codepoints.join('_');
+    const codepoints = match[1].split("-").filter((cp) => cp !== "fe0f");
+    const notoCode = codepoints.map((cp) => cp.padStart(4, "0")).join("_");
 
     const url = api.runtime.getURL(`emoji/emoji_u${notoCode}.svg`);
     img.src = url;
@@ -55,7 +57,7 @@ class ContentScript {
   }
 
   replaceAllTimer(this: ContentScript) {
-    const imgs = Array.from(document.getElementsByTagName('img'));
+    const imgs = Array.from(document.getElementsByTagName("img"));
     imgs.forEach(this.handleImage.bind(this));
   }
 

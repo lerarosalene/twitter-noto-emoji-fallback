@@ -9,7 +9,12 @@ class PopupScript {
     if (!evt.target || !(evt.target instanceof HTMLInputElement)) {
       return;
     }
-    this._port?.postMessage(message({ type: MessageType.SETTINGS_CHANGE, replaceAll: evt.target.checked }));
+    this._port?.postMessage(
+      message({
+        type: MessageType.SETTINGS_CHANGE,
+        replaceAll: evt.target.checked,
+      })
+    );
   }
 
   private handleMessage(msg: Message) {
@@ -21,7 +26,7 @@ class PopupScript {
   start() {
     this._port = api.runtime.connect();
     this._port.postMessage(message({ type: MessageType.SETTINGS_REQUEST }));
-    this._check = document.querySelector('#replace-all');
+    this._check = document.querySelector("#replace-all");
     this._check?.addEventListener("change", this.handleChange.bind(this));
     this._port.onMessage.addListener(this.handleMessage.bind(this));
   }
